@@ -44,7 +44,8 @@ def build_server(store: Store | None = None) -> FastMCP:
         """Save something durable the user said: a preference, decision, plan or fact.
 
         Write the note as a full sentence about the user, and name the project in it
-        when it belongs to one. Corrections go here too.
+        when it belongs to one. This demo only adds notes, so when the user corrects
+        a saved note, save the new one and call forget on the old one.
         """
         saved = store.remember(note, project)
         where = f"in {saved.project}" if saved.project else "as a global note"
