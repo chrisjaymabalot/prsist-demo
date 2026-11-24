@@ -85,16 +85,16 @@ Notes not in any project apply everywhere, in every session.
 
 `src/prsist_demo` is a small stand-in for prsist's MCP server. It has the same three tools and serves [15 made-up notes](src/prsist_demo/notes.json). It runs locally over stdio, with no database, API keys or network. It doesn't contain prsist's extraction pipeline or prompts: it finds notes by shared words, where prsist uses embeddings.
 
-Install [uv](https://docs.astral.sh/uv/) and clone the repo. Then add the server to Claude Code:
+Install [uv](https://docs.astral.sh/uv/) and clone the repo. Then add the server to Claude Code for your user, so it works in any folder:
 
 ```sh
 git clone https://github.com/chrisjaymabalot/prsist-demo
-claude mcp add prsist-demo -- uv run --directory "$PWD/prsist-demo" prsist-demo
+claude mcp add --scope user prsist-demo -- uv run --directory "$PWD/prsist-demo" prsist-demo
 ```
 
 Start Claude Code in a folder named `tide-tables` and ask what it remembers about the project, or tell it something to remember. `remember` and `forget` change only the running server's copy. Each new session starts from the same 15 notes.
 
-Run the tests with `uv run pytest`. To remove the server, run `claude mcp remove prsist-demo`.
+Run the tests with `uv run pytest`. To remove the server, run `claude mcp remove --scope user prsist-demo`.
 
 | Tool | Does |
 | --- | --- |
