@@ -20,7 +20,7 @@ The main choices behind prsist, what each one costs, and the alternatives I turn
 
 **Choice.**
 - Transcripts are encrypted with a key that only the app server holds, so the database and its backups store only ciphertext.
-- A transcript is deleted as soon as its job finishes. An hourly sweep, run by pg_cron inside Postgres, deletes any transcript still waiting after 23 hours. So while the sweep runs, no transcript stays in the database longer than 24 hours. Deleted transcripts remain in the database's backups, still encrypted, until those backups expire.
+- A transcript is deleted as soon as its job finishes. An hourly sweep, run by pg_cron inside Postgres, deletes any transcript still waiting after 23 hours. So while the sweep runs, no live row holds a transcript for longer than 24 hours. Deleted transcripts can remain, still encrypted, in old row versions until Postgres reuses the space, and in backups until they expire.
 - Secrets are scrubbed on the user's machine before anything is sent.
 - Each note keeps a one-line evidence snippet instead of the transcript.
 
