@@ -4,7 +4,7 @@ This is a made-up Claude Code session in an invented repo, `github.com/example/t
 
 ## Before: what the hook sends
 
-At the end of a session, or before Claude Code compacts it, prsist's hook on the user's machine reads the new part of the transcript. It drops tool output, file contents, diffs and the notes prsist itself gave the session at the start. It replaces anything that looks like a secret, then sends what's left to prsist's server.
+At the end of a session, or before Claude Code compacts it, prsist's hook on the user's machine reads the new part of the transcript. It drops tool output, such as file contents, diffs and logs, and the notes prsist itself gave the session at the start. What the user and Claude typed, including anything pasted into the chat, is kept. It replaces anything that looks like a secret, then sends what's left to prsist's server.
 
 ```text
 User: The NOAA API has no UK stations, so the tide times are just wrong for

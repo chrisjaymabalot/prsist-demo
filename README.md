@@ -33,7 +33,7 @@ flowchart LR
     API <--> DB
 ```
 
-1. **Clean on your machine.** The hook strips tool output, file dumps and diffs, plus the notes prsist injected at the start, so prsist doesn't re-learn its own echo. It then replaces anything that looks like a secret. This step uses no model.
+1. **Clean on your machine.** The hook strips tool output, such as file contents, diffs and logs, plus the notes prsist injected at the start, so prsist doesn't re-learn its own echo. It then replaces anything that looks like a secret. This step uses no model.
 2. **Extract.** On the server, Claude Haiku 5.5 reads the session alongside the project's saved notes. It keeps only what the user said or decided, and skips assistant suggestions, progress updates and repeats of saved notes.
 3. **File.** The git remote decides the project. Notes from chat apps are filed by meaning.
 4. **Reconcile.** Each candidate is compared with the closest saved notes, then added, used to replace an older note (kept as history), counted as a duplicate, or dropped.
