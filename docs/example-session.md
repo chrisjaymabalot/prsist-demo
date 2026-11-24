@@ -4,29 +4,29 @@ This is a made-up Claude Code session in an invented repo, `github.com/example/t
 
 ## Before: what the hook sends
 
-At the end of a session, or before Claude Code compacts it, prsist's hook on the user's machine reads the new part of the transcript. It drops tool output, such as file contents, diffs and logs, and the notes prsist itself gave the session at the start. What the user and Claude typed, including anything pasted into the chat, is kept. It replaces anything that looks like a secret, then sends what's left to prsist's server.
+At the end of a session, or before Claude Code compacts it, prsist's hook on the user's machine reads the new part of the transcript. It drops tool output, such as file contents, diffs and logs, and the notes prsist itself gave the session at the start. Long code blocks in Claude's replies become `[code omitted]`. What the user and Claude typed, including anything pasted into the chat, is kept. Below, `[secret removed]` is the hook's own marker, and `(tool output dropped)` is a note for this page: the hook leaves no marker there. It replaces anything that looks like a secret, then sends what's left to prsist's server.
 
 ```text
 User: The NOAA API has no UK stations, so the tide times are just wrong for
       Brighton. Let's switch to the Admiralty UK Tidal API. Key is in .env:
-      ADMIRALTY_API_KEY=[scrubbed]
+      ADMIRALTY_API_KEY=[secret removed]
 
 Claude: I'll switch the client to the Admiralty UK Tidal API. Since you write
         in UK English, I'll keep the error messages that way too.
-        [tool output removed by the hook]
+        (tool output dropped)
         The client now calls Admiralty. Should I add Redis for caching?
 
 User: No Redis, that's overkill. The free tier only allows 10,000 calls a
       month, so cache responses in SQLite for 6 hours.
 
 Claude: Done. Responses are cached in SQLite for 6 hours.
-        [tool output removed by the hook]
+        (tool output dropped)
 
 User: Also, store every time in UTC and only convert to Europe/London when we
       display it. The BST change broke the March times last year.
 
 Claude: Updated the model and the template filter. All 14 tests pass.
-        [tool output removed by the hook]
+        (tool output dropped)
 
 User: Great, open a PR. Next I want surf height forecasts, but only after the
       tide pages ship.
@@ -49,7 +49,7 @@ The worker reads the session with the project's existing notes beside it. It pul
 
 | From the session | Why it isn't a note |
 | --- | --- |
-| The API key | Replaced by `[scrubbed]` on the user's machine, before anything was sent. |
+| The API key | Replaced by `[secret removed]` on the user's machine, before anything was sent. |
 | "Should I add Redis for caching?" | Claude suggested it and the user turned it down. prsist keeps what the user decided (SQLite), not the assistant's suggestions. |
 | "Since you write in UK English…" | Claude was repeating a note it got at the start of the session. Saving it again would create a duplicate from prsist's own echo. |
 | "All 14 tests pass", "Opened the pull request" | Progress on the work, which is out of date by the next session. |
