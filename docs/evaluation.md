@@ -6,8 +6,8 @@ The sessions are my own, so they stay private. This page gives the method and th
 
 ## The dataset
 
-- **39 real Claude Code sessions** from my own work in November 2026, processed with the hook's own code. Each session goes through the same cleaning, secret scrubbing and chunking as in production, so the run sees exactly what prsist would receive.
-- **37 of them labelled by hand, 20 fully reviewed so far** (17 in dev, 3 in test). The run uses only reviewed sessions.
+- **37 real Claude Code sessions** from my own work in November 2026, processed with the hook's own code. Each session goes through the same cleaning, secret scrubbing and chunking as in production, so the run sees exactly what prsist would receive.
+- **20 of them labelled by hand so far** (17 in dev, 3 in test), with 65 expected notes across the dev sessions. The run skips the other 17 until they're labelled.
 - **Each label file lists:**
   - **expected**: notes prsist must save from this session.
   - **acceptable**: notes it may save without penalty.
@@ -16,7 +16,7 @@ The sessions are my own, so they stay private. This page gives the method and th
 
   Each note also has a scope (global or project) and a type (preference, decision, plan or fact).
 - **A dev/test split.** A hash of the session id sends about one session in three to the test split, so a session never changes side. Prompts are tuned on dev only, and test is kept for the final check.
-- **A review flag.** A session counts only once I've checked its whole label file. Some sessions were labelled and later left out: they were ones another agent ran through T3 Code, which the production hook no longer sends.
+- **A review flag.** A session counts only once I've checked its whole label file. Two dev sessions were labelled and later left out: they were ones another agent ran through T3 Code, which the production hook no longer sends.
 
 ## How a run works
 
