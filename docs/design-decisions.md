@@ -20,11 +20,11 @@ The main choices behind prsist, what each one costs, and the alternatives I turn
 
 **Choice.**
 - Transcripts are encrypted with a key that only the app server holds, so the database and its backups store only ciphertext.
-- A transcript is deleted as soon as its job finishes. An hourly sweep inside Postgres deletes any transcript still waiting after 23 hours, so none is kept longer than 24 hours.
+- A transcript is deleted as soon as its job finishes. An hourly sweep, run by pg_cron inside Postgres, deletes any transcript still waiting after 23 hours. So while the sweep runs, no transcript stays in the database longer than 24 hours. Deleted transcripts remain in the database's backups, still encrypted, until those backups expire.
 - Secrets are scrubbed on the user's machine before anything is sent.
 - Each note keeps a one-line evidence snippet instead of the transcript.
 
-**Why.** People rate their AI chats as more sensitive than email, and prsist collects them from several tools at once. A privacy promise is only worth something if the system enforces it, so the sweep runs inside the database. It keeps working even if the whole app is down.
+**Why.** People rate their AI chats as more sensitive than email, and prsist collects them from several tools at once. A privacy promise is only worth something if the system enforces it, so the sweep runs inside the database. It keeps working even if the whole app is down, and the queue checks alert me if jobs stall.
 
 **Cost.** Without transcripts, I can't re-run extraction over old sessions after a prompt improves. That's why the [evaluation](evaluation.md) uses my own sessions, labelled by hand, instead of production data.
 
