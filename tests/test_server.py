@@ -64,10 +64,10 @@ def test_recall_without_a_project_finds_matching_notes_from_any_project(server):
     assert {"n-001", "n-005"} <= set(ids)  # global notes always come along
 
 
-def test_recall_with_an_unknown_project_says_so_and_searches_everything(server):
-    text = call(server, "recall", query="surf forecasts", project="no-such-repo")
-    assert text.startswith("No project is named no-such-repo")
-    assert "n-010" in note_ids(text)
+def test_recall_with_an_unknown_project_says_so_and_gives_only_global_notes(server):
+    text = call(server, "recall", query="Should I buy a JR Pass for Japan?", project="tide-table")
+    assert text.startswith("No project is named tide-table, so only global notes are shown.")
+    assert set(note_ids(text)) == {"n-001", "n-002", "n-003", "n-004", "n-005"}
 
 
 def test_remember_saves_a_note_that_recall_then_finds(server):

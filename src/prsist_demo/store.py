@@ -80,9 +80,10 @@ class Store:
     def recall(self, query: str, project: str | None = None) -> str:
         """Notes for `query`, closest first and then newest, framed as information.
 
-        With a known project: that project's notes, then global notes. Without one:
-        global notes, plus any project's notes that share a word with the query.
-        Notes of other projects never appear when a project is named.
+        With a known project: that project's notes, then global notes. With a name
+        that matches no project: global notes only. Without a project: global notes,
+        plus any project's notes that share a word with the query. Notes of other
+        projects never appear when a project is named.
         """
         wanted = _words(query)
         named = self._project_named(project)
@@ -94,6 +95,8 @@ class Store:
         if named is not None:
             in_project = sorted((n for n in self._notes.values() if n.project == named), key=rank)
             chosen = in_project + global_notes
+        elif project is not None:
+            chosen = global_notes
         else:
             matching = [
                 n for n in self._notes.values() if n.project is not None and wanted & _words(n.text)
@@ -102,7 +105,7 @@ class Store:
 
         lines = []
         if project is not None and named is None:
-            lines.append(f"No project is named {html.escape(project)}, so notes from every project are searched.")
+            lines.append(f"No project is named {html.escape(project)}, so only global notes are shown.")
         if not chosen:
             lines.append("No saved notes yet.")
             return "\n".join(lines)
