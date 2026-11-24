@@ -1,0 +1,25 @@
+[project]
+name = "prsist-demo"
+version = "0.1.0"
+description = "A stand-in prsist MCP server that serves made-up notes, for trying prsist's tools in Claude Code."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Chris-Jay Mabalot", email = "174888242+CM9ine@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=4.1.4",
+]
+
+[project.scripts]
+prsist-demo = "prsist_demo.server:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
