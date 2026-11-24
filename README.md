@@ -83,7 +83,7 @@ Notes not in any project apply everywhere, in every session.
 
 ## Try it
 
-`src/prsist_demo` is a small stand-in for prsist's MCP server. It has the same three tools and serves [15 made-up notes](src/prsist_demo/notes.json). It runs locally over stdio, with no database, API keys or network. It doesn't contain prsist's extraction pipeline or prompts: it finds notes by shared words, where prsist uses embeddings.
+`src/prsist_demo` is a small stand-in for prsist's MCP server. It has the same three tools and serves [15 made-up notes](src/prsist_demo/notes.json). It runs locally over stdio, with no database, API keys or network. It doesn't contain prsist's extraction pipeline or prompts: it finds notes by shared words, where prsist uses embeddings. Its `recall` also takes an optional project and keeps to it, the way prsist picks the notes a session starts with. prsist's own `recall` searches every note.
 
 Install [uv](https://docs.astral.sh/uv/) and clone the repo. Then add the server to Claude Code for your user, so it works in any folder:
 

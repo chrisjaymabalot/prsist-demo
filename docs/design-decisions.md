@@ -40,7 +40,7 @@ The main choices behind prsist, what each one costs, and the alternatives I turn
 
 **Choice.** Every note is either **global**, such as "writes in UK English", or belongs to **one project**, such as "tide-tables caches responses in SQLite". In coding tools, the git remote URL identifies the project. Folder paths differ between machines, but the remote doesn't. Notes from chat apps, like a trip or a training plan, are filed by meaning. A nightly job groups loose notes on one topic into a new project.
 
-**Why.** A preference should follow you everywhere, but a project fact shouldn't leak into another repo. Recall returns the current project's notes first, then global ones, and never another project's.
+**Why.** A preference should follow you everywhere, but a project fact shouldn't leak into another repo. The notes a session starts with are the current project's first, then global ones, and never another project's. When Claude searches with `recall`, it searches all of the user's notes, closest first, because the user may be asking about another project.
 
 ## Update notes instead of piling them up
 
