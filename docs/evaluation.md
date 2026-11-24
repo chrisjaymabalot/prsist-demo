@@ -42,7 +42,7 @@ The extractor is Claude Haiku 5.5 at medium effort.
 
 How to read this:
 
-- **61.5% capture** in run 3 means prsist saved, on average, 40 of the 65 notes I expected across the 17 dev sessions. The three repeats ranged from 38 to 42 of 65. The Wilson 95% lower bound is 54.5%.
+- **61.5% capture** in run 3 means prsist saved, on average, 40 of the 65 notes I expected across the 17 dev sessions. The three repeats ranged from 38 to 42 of 65. The report's Wilson 95% lower bound is 54.5%, but it pools all three repeats of every session as if they were independent, which they aren't. The true bound is wider, so treat it as a rough guide.
 - **$0.84** is the cost of the whole run: 17 sessions, each processed three times. Extraction itself was $0.17. The other $0.67 was the Opus judge, which is used only for evaluation.
 - **v5 to v6**: junk fell from about 27% to about 22%, and the prompt stopped copying its own examples (2 to 0). Capture held steady. The runs aren't a strict like-for-like comparison. At the same time I changed the hook to stop sending sessions run by another agent, which removed 2 sessions from dev, and most of the junk drop comes from that. On the same 17 sessions, junk barely moved.
 - **Runs 2 and 3** use the same prompt and differ by about 3 points. That spread is why every run repeats each session and reports a range, rather than trusting one number.
