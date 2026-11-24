@@ -1,6 +1,6 @@
 # One session, before and after
 
-This is a made-up Claude Code session in an invented repo, `github.com/example/tide-tables`, and the notes prsist would keep from it. The person and the project are invented. Real sessions never leave prsist, and the transcripts it does receive are deleted within 24 hours.
+This is a made-up Claude Code session in an invented repo, `github.com/example/tide-tables`, and the notes prsist would keep from it. The person and the project are invented, and no real session appears anywhere in this repo.
 
 ## Before: what the hook sends
 
