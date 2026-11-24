@@ -1,0 +1,17 @@
+[
+  {"id": "n-001", "text": "The user writes docs, comments and commit messages in UK English.", "project": null, "type": "preference", "saved": "2026-10-03"},
+  {"id": "n-002", "text": "The user manages every Python project with uv and never with pip directly.", "project": null, "type": "preference", "saved": "2026-10-05"},
+  {"id": "n-003", "text": "The user wants a failing test written before each bug fix.", "project": null, "type": "preference", "saved": "2026-10-09"},
+  {"id": "n-004", "text": "The user prefers small pull requests that each do one thing.", "project": null, "type": "preference", "saved": "2026-10-14"},
+  {"id": "n-005", "text": "The user is vegetarian.", "project": null, "type": "fact", "saved": "2026-10-20"},
+  {"id": "n-006", "text": "tide-tables shows tide times for UK beaches on a phone-sized web page.", "project": "tide-tables", "type": "fact", "saved": "2026-10-22"},
+  {"id": "n-007", "text": "In tide-tables, tide predictions come from the Admiralty UK Tidal API, not NOAA, because NOAA has no UK stations.", "project": "tide-tables", "type": "decision", "saved": "2026-11-12"},
+  {"id": "n-008", "text": "In tide-tables, every time is stored in UTC and converted to Europe/London only for display.", "project": "tide-tables", "type": "decision", "saved": "2026-11-12"},
+  {"id": "n-009", "text": "In tide-tables, API responses are cached for 6 hours in SQLite to stay under the free tier's 10,000 calls a month.", "project": "tide-tables", "type": "decision", "saved": "2026-11-12"},
+  {"id": "n-010", "text": "The user plans to add surf height forecasts to tide-tables after the tide pages ship.", "project": "tide-tables", "type": "plan", "saved": "2026-11-12"},
+  {"id": "n-011", "text": "The Japan trip runs from 4 to 18 April 2027.", "project": "Japan trip", "type": "fact", "saved": "2026-10-28"},
+  {"id": "n-012", "text": "For the Japan trip, the user booked three nights at a ryokan in Hakone.", "project": "Japan trip", "type": "fact", "saved": "2026-11-02"},
+  {"id": "n-013", "text": "For the Japan trip, the user decided against a 14-day JR Pass and will buy single tickets.", "project": "Japan trip", "type": "decision", "saved": "2026-11-06"},
+  {"id": "n-014", "text": "The user is training for the Hackney Half in May 2027 and targets under 1 hour 50.", "project": "Half marathon", "type": "plan", "saved": "2026-10-18"},
+  {"id": "n-015", "text": "For the half marathon, the user does long runs on Sunday mornings.", "project": "Half marathon", "type": "fact", "saved": "2026-10-25"}
+]
