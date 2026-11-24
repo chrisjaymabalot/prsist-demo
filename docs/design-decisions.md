@@ -4,7 +4,7 @@ The main choices behind prsist, what each one costs, and the alternatives I turn
 
 ## Capture automatically, through hooks and MCP
 
-**Choice.** Claude Code has hooks, so prsist captures from it automatically. When a session ends or goes idle, a hook sends the new part of the transcript to prsist. When a session starts, another hook gives Claude the relevant notes. Codex has an experimental hooks engine, and hooks for it are planned. Until then Codex, like the Claude apps, which have no hooks, connects through MCP, and the model calls prsist's tools itself.
+**Choice.** Claude Code has hooks, so prsist captures from it automatically. When a session ends, or before Claude Code compacts it, a hook sends the new part of the transcript to prsist. When a session starts, another hook gives Claude the relevant notes. Codex has an experimental hooks engine, and hooks for it are planned. Until then Codex, like the Claude apps, which have no hooks, connects through MCP, and the model calls prsist's tools itself.
 
 **Why.** If saving is manual, prsist is just a notes file. MCP is the one interface that Claude, Claude Code and Codex all support, so one server reaches all three with one account.
 

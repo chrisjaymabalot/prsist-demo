@@ -10,7 +10,7 @@ prsist is in private alpha and its source is private. This repo shows what it do
 
 ## What it does
 
-- **Captures automatically.** In Claude Code, a hook sends each session to prsist when it ends or goes idle, so you don't have to ask it to save anything. Codex and the Claude apps connect through MCP for now, where the model saves notes itself. Codex hooks are planned.
+- **Captures automatically.** In Claude Code, a hook sends each session to prsist when it ends or before Claude Code compacts it, so you don't have to ask it to save anything. Codex and the Claude apps connect through MCP for now, where the model saves notes itself. Codex hooks are planned.
 - **Keeps notes, not conversations.** A small model pulls out the preferences, decisions, plans and facts you stated, and updates older notes they contradict. The transcript is deleted as soon as it's processed, and within 24 hours at most.
 - **Gives them back.** A new session in the same repo starts with that project's notes and your global preferences. Claude can also search them through MCP.
 - **Lets you fix them.** A dashboard shows every note by project, what replaced what, and lets you move, restore or forget notes.
