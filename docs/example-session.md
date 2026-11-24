@@ -11,27 +11,27 @@ User: The NOAA API has no UK stations, so the tide times are just wrong for
       Brighton. Let's switch to the Admiralty UK Tidal API. Key is in .env:
       ADMIRALTY_API_KEY=[secret removed]
 
-Claude: I'll switch the client to the Admiralty UK Tidal API. Since you write
-        in UK English, I'll keep the error messages that way too.
-        (tool output dropped)
-        The client now calls Admiralty. Should I add Redis for caching?
+Assistant: I'll switch the client to the Admiralty UK Tidal API. Since you write
+           in UK English, I'll keep the error messages that way too.
+           (tool output dropped)
+           The client now calls Admiralty. Should I add Redis for caching?
 
 User: No Redis, that's overkill. The free tier only allows 10,000 calls a
       month, so cache responses in SQLite for 6 hours.
 
-Claude: Done. Responses are cached in SQLite for 6 hours.
-        (tool output dropped)
+Assistant: Done. Responses are cached in SQLite for 6 hours.
+           (tool output dropped)
 
 User: Also, store every time in UTC and only convert to Europe/London when we
       display it. The BST change broke the March times last year.
 
-Claude: Updated the model and the template filter. All 14 tests pass.
-        (tool output dropped)
+Assistant: Updated the model and the template filter. All 14 tests pass.
+           (tool output dropped)
 
 User: Great, open a PR. Next I want surf height forecasts, but only after the
       tide pages ship.
 
-Claude: Opened the pull request.
+Assistant: Opened the pull request.
 ```
 
 ## After: what prsist keeps
