@@ -15,9 +15,9 @@ Claude: I'll switch the client to the Admiralty UK Tidal API. Since you write
         in UK English, I'll keep the error messages that way too.
         [tool output removed by the hook]
         The client now calls Admiralty. Should I add Redis for caching?
-        The free tier allows 10,000 calls a month.
 
-User: No Redis, that's overkill. Cache responses in SQLite for 6 hours.
+User: No Redis, that's overkill. The free tier only allows 10,000 calls a
+      month, so cache responses in SQLite for 6 hours.
 
 Claude: Done. Responses are cached in SQLite for 6 hours.
         [tool output removed by the hook]
