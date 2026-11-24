@@ -96,3 +96,11 @@ def test_forget_deletes_a_note_for_good(server):
     assert call(server, "forget", memory_id="n-007") == "Forgot n-007."
     assert "n-007" not in note_ids(call(server, "recall", query="tide API", project="tide-tables"))
     assert call(server, "forget", memory_id="n-007") == "No saved memory has the id n-007."
+
+
+def test_an_id_is_never_reused_after_forget(server):
+    call(server, "remember", note="The user likes sea swimming.")
+    call(server, "forget", memory_id="n-016")
+    assert call(server, "remember", note="The user likes cold showers.") == "Saved n-017 as a global note on 2026-11-24."
+    assert call(server, "forget", memory_id="n-016") == "No saved memory has the id n-016."
+    assert "n-017" in note_ids(call(server, "recall", query="cold showers"))

@@ -63,6 +63,8 @@ class Store:
     def __init__(self, notes: list[Note], today: Callable[[], date] = date.today) -> None:
         self._notes = {n.id: n for n in notes}
         self._today = today
+        # Never reuse an id, so a repeated forget can't delete a later note.
+        self._last_number = max((int(i.removeprefix("n-")) for i in self._notes), default=0)
 
     def projects(self) -> list[str]:
         return sorted({n.project for n in self._notes.values() if n.project is not None})
@@ -117,8 +119,8 @@ class Store:
             raise ValueError(f"A note must be 1 to {MAX_NOTE_CHARS} characters.")
         if project is not None:
             project = self._project_named(project) or project.strip() or None
-        number = max((int(i.removeprefix("n-")) for i in self._notes), default=0) + 1
-        note = Note(id=f"n-{number:03d}", text=text, project=project, type=None, saved=self._today())
+        self._last_number += 1
+        note = Note(id=f"n-{self._last_number:03d}", text=text, project=project, type=None, saved=self._today())
         self._notes[note.id] = note
         return note
 
