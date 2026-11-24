@@ -2,7 +2,7 @@
 
 Run it over stdio and add it to Claude Code:
 
-    claude mcp add prsist-demo -- uv run --directory /path/to/prsist-demo prsist-demo
+    claude mcp add --scope user prsist-demo -- uv run --directory /path/to/prsist-demo prsist-demo
 """
 
 from fastmcp import FastMCP
