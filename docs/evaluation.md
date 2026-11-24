@@ -53,7 +53,7 @@ Some failures are rare but costly, so each has its own eval with many repeats:
 
 - **Reconcile**: notes that only share a topic must never be merged. Two examples are a rail-pass plan and the trip's dates, or a diet and a seat preference. Prompt v4 merged none in 600 runs and caught all 240 true duplicates and updates.
 - **Restated notes**: Claude repeating a saved note must not create a new one. 2 failures in 120 runs.
-- **Filing**: notes saved from chat apps must land in the right project or stay global. In 100 runs, no global note was filed into a project, and 95 to 100 of the project notes landed in the right one.
+- **Filing**: notes saved from chat apps must land in the right project or stay global. 20 project notes and 25 global ones each run 5 times against 9 projects. In 125 global-note runs, none was filed into a project, and 95 to 100 of the 100 project-note runs landed in the right one.
 - **Clustering**: the nightly job that groups loose notes into new projects, such as a trip, must not pull in stable facts about the user.
 
 ## What's next
