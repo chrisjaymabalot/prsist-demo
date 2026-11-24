@@ -107,7 +107,7 @@ class Store:
         lines.append(_FRAMING)
         for note in chosen[:MAX_RECALLED]:
             lines.append(
-                f'<note id="{note.id}" saved="{note.saved.isoformat()}">{html.escape(note.text)}</note>'
+                f'<note id="{note.id}" saved="{note.saved.isoformat()}">{html.escape(note.text, quote=False)}</note>'
             )
         return "\n".join(lines)
 
