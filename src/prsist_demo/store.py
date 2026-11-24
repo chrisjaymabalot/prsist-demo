@@ -12,10 +12,6 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import date
 from importlib import resources
-from typing import Literal
-
-type NoteType = Literal["preference", "decision", "plan", "fact"]
-
 MAX_NOTE_CHARS = 2000
 MAX_RECALLED = 20
 
@@ -37,7 +33,6 @@ class Note:
     id: str
     text: str
     project: str | None  # None means a global note, true in every project.
-    type: NoteType | None  # None until prsist works out the type.
     saved: date
 
 
@@ -52,7 +47,6 @@ def load_seed() -> list[Note]:
             id=n["id"],
             text=n["text"],
             project=n["project"],
-            type=n["type"],
             saved=date.fromisoformat(n["saved"]),
         )
         for n in raw
@@ -123,7 +117,7 @@ class Store:
         if project is not None:
             project = self._project_named(project) or project.strip() or None
         self._last_number += 1
-        note = Note(id=f"n-{self._last_number:03d}", text=text, project=project, type=None, saved=self._today())
+        note = Note(id=f"n-{self._last_number:03d}", text=text, project=project, saved=self._today())
         self._notes[note.id] = note
         return note
 
