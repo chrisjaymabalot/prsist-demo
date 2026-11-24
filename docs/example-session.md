@@ -53,7 +53,7 @@ The worker reads the session with the project's existing notes beside it. It pul
 | "Should I add Redis for caching?" | Claude suggested it and the user turned it down. prsist keeps what the user decided (SQLite), not the assistant's suggestions. |
 | "Since you write in UK English…" | Claude was repeating a note it got at the start of the session. Saving it again would create a duplicate from prsist's own echo. |
 | "All 14 tests pass", "Opened the pull request" | Progress on the work, which is out of date by the next session. |
-| "The BST change broke the March times last year" | Kept only as the reason behind the UTC decision. The incident on its own isn't useful later. |
+| "The BST change broke the March times last year" | A one-off incident. The decision it led to, storing times in UTC, is what's worth keeping. |
 
 ## The next session
 
